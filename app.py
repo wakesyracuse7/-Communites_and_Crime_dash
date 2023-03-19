@@ -5,6 +5,7 @@ from dash import html
 import pandas as pd
 import plotly.graph_objs as go
 import plotly.express as px
+import dash_bootstrap_components as dbc
 
 # Load data
 df = pd.read_csv("data/processed_communities.csv")
@@ -30,33 +31,45 @@ df = df[column_list]
 df = df.rename(columns=column_list)
 
 # Define app and layout
-app = dash.Dash(__name__)
-app.layout = html.Div([
-    html.H1("Explore Crime Rate With Different Factors"),
-    html.Div([
-        html.Div([
-            dcc.Dropdown(
-                id="scatter-x",
-                options=[{"label": colname, "value": colname} for colname in df.columns],
-                value="Population"
-            ),
-            dcc.Dropdown(
-                id="scatter-y",
-                options=[{"label": colname, "value": colname} for colname in df.columns],
-                value="Violent Crime Rate"
-            ),
-            dcc.Graph(id="scatter-plot")
-        ], className="six columns"),
-        html.Div([
-            dcc.Dropdown(
-                id="correlation-column",
-                options=[{"label": colname, "value": colname} for colname in df.columns],
-                value="Population"
-            ),
-            html.Table(id="correlation-table")
-        ], className="six columns")
-    ], className="row")
-])
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
+
+app.layout = dbc.Container(
+    [
+        dbc.Row(
+            [
+                dbc.Col(
+                    [
+                        html.H1("Explore Crime Rate With Different Factors"),
+                        dcc.Dropdown(
+                            id="scatter-x",
+                            options=[{"label": colname, "value": colname} for colname in df.columns],
+                            value="Population"
+                        ),
+                        dcc.Dropdown(
+                            id="scatter-y",
+                            options=[{"label": colname, "value": colname} for colname in df.columns],
+                            value="Violent Crime Rate"
+                        ),
+                        dcc.Graph(id="scatter-plot")
+                    ],
+                    md=6,
+                ),
+                dbc.Col(
+                    [
+                        dcc.Dropdown(
+                            id="correlation-column",
+                            options=[{"label": colname, "value": colname} for colname in df.columns],
+                            value="Population"
+                        ),
+                        html.Table(id="correlation-table")
+                    ],
+                    md=6,
+                ),
+            ]
+        )
+    ],
+    fluid=True,
+)
 
 # Define callbacks
 @app.callback(
