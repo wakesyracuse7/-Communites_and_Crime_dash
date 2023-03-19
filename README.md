@@ -1,4 +1,4 @@
-# Communites_and_Crime_dash
+# Communites and Crime - dash
 UBC MDS 532 individual project
 
 ## Motivation and purpose
@@ -12,3 +12,7 @@ The Explore Crime Rate With Different Factors app is designed to provide users w
 The scatter plot displays the relationship between two factors, which can be selected by the user using the dropdown boxes. The upper left dropdown box and the lower left dropdown box are for selecting the x and y axes on the scatter plot, respectively.
 
 The correlation table shows the correlation between one factor and all the other factors. Users can select the factor of interest from the right dropdown box.
+
+## Reference
+
+The data set can be found [here](https://archive.ics.uci.edu/ml/datasets/communities+and+crime).
