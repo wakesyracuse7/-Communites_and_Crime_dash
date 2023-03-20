@@ -1,5 +1,6 @@
 # Communites and Crime - dash
 UBC MDS 532 individual project
+Link to the dashboard: [Explore Crime Rate With Different Factors](https://wakesyracuse7.onrender.com/)
 
 ## Motivation and purpose
 
