@@ -13,6 +13,8 @@ The scatter plot displays the relationship between two factors, which can be sel
 
 The correlation table shows the correlation between one factor and all the other factors. Users can select the factor of interest from the right dropdown box.
 
+![](media/dashboard.gif)
+
 ## Reference
 
 The data set can be found [here](https://archive.ics.uci.edu/ml/datasets/communities+and+crime).
