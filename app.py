@@ -28,10 +28,10 @@ column_list = {"latitude": "Latitude",
 df = df[column_list]
 
 # rename colunms
-df = df.rename(columns=column_list)
+df = df.rename(columns = column_list)
 
 # Define app and layout
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.SOLAR])
+app = dash.Dash(__name__, external_stylesheets = [dbc.themes.SOLAR])
 
 app.layout = dbc.Container(
     [
@@ -41,34 +41,34 @@ app.layout = dbc.Container(
                     [
                         html.H1("Explore Crime Rate With Different Factors"),
                         dcc.Dropdown(
-                            id="scatter-x",
-                            options=[{"label": colname, "value": colname} for colname in df.columns],
-                            value="Population"
+                            id = "scatter-x",
+                            options = [{"label": colname, "value": colname} for colname in df.columns],
+                            value = "Population"
                         ),
                         dcc.Dropdown(
-                            id="scatter-y",
-                            options=[{"label": colname, "value": colname} for colname in df.columns],
-                            value="Violent Crime Rate"
+                            id = "scatter-y",
+                            options = [{"label": colname, "value": colname} for colname in df.columns],
+                            value = "Violent Crime Rate"
                         ),
-                        dcc.Graph(id="scatter-plot")
+                        dcc.Graph(id = "scatter-plot")
                     ],
-                    md=6,
+                    md = 6,
                 ),
                 dbc.Col(
                     [
                         dcc.Dropdown(
-                            id="correlation-column",
-                            options=[{"label": colname, "value": colname} for colname in df.columns],
-                            value="Population"
+                            id = "correlation-column",
+                            options = [{"label": colname, "value": colname} for colname in df.columns],
+                            value = "Population"
                         ),
-                        html.Table(id="correlation-table")
+                        html.Table(id = "correlation-table")
                     ],
-                    md=6,
+                    md = 6,
                 ),
             ]
         )
     ],
-    fluid=True,
+    fluid = True,
 )
 
 # Define callbacks
@@ -80,7 +80,7 @@ app.layout = dbc.Container(
 
 # Scatter plot
 def update_scatter_plot(xcol, ycol):
-    fig = px.scatter(df, x=xcol, y=ycol)
+    fig = px.scatter(df, x = xcol, y = ycol)
     return fig
 
 @app.callback(
